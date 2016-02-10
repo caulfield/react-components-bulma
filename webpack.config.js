@@ -9,12 +9,13 @@ module.exports = new WebpackConfig().merge({
     index: "./src/index.js"
   },
 
-  output: {
-    path: path.resolve(__dirname, "./dist"),
-    filename: "[name].js"
+  resolve: {
+    modulesDirectories: ['node_modules']
   },
 
   module: {
+    noParse: [/autoit.js/],
+
     loaders: [
       {
         test: /\.jsx?$/,

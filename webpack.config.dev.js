@@ -11,6 +11,11 @@ module.exports = new WebpackConfig().extend('./webpack.config.js')
 .merge({
   entry: "./examples/index.jsx",
 
+  output: {
+    path: 'dist',
+    filename: "main.js"
+  },
+
   module: {
     loaders: [
       {
