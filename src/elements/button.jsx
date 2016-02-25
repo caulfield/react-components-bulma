@@ -1,5 +1,5 @@
-import React from 'react';
-import { default as cx } from 'classnames';
+const React = require('react');
+const cx = require('classnames');
 
 const Button = React.createClass({
 
@@ -8,7 +8,11 @@ const Button = React.createClass({
   },
 
   onClick(event) {
-    this.loading(this.state.onClick(event));
+    if (this.state.onClick) {
+      return this.loading(this.state.onClick(event));
+    } else {
+      return;
+    }
   },
 
   loading(promise) {
@@ -27,7 +31,7 @@ const Button = React.createClass({
       {"is-disabled": this.state.disabled},
       {"is-outlined": this.state.outlined},
       {[`is-${this.state.size}`]: this.state.size},
-      {[`is-${this.state.color}`]: this.state.color}
+      {[`is-${this.state.type}`]: this.state.type}
     );
     return className;
   },
@@ -35,14 +39,15 @@ const Button = React.createClass({
   render() {
     return(
       <a
+        {...this.state}
         className={this.getClassName()}
         onClick={this.onClick}
       >
-        {this.state.children}
+        {this.props.children}
       </a>
     );
   }
 });
 
 
-export default Button
+module.exports = Button

@@ -68,7 +68,7 @@
 
 	console.log('Welcome, This is react-components-bulma doc');
 
-	__webpack_require__(353);
+	__webpack_require__(356);
 
 	var App = _react2.default.createClass({
 	  displayName: 'App',
@@ -33505,14 +33505,171 @@
 	var Page = _require.Page;
 	var Example = _require.Example;
 
+	var Button = __webpack_require__(353);
+
 	var Colors = {
 	  main: React.createElement(
-	    'a',
-	    { className: 'button' },
-	    'button example'
-	  )
+	    'span',
+	    null,
+	    React.createElement(
+	      Button,
+	      null,
+	      'Button'
+	    ),
+	    React.createElement(
+	      Button,
+	      { type: 'primary' },
+	      'Primary'
+	    ),
+	    React.createElement(
+	      Button,
+	      { type: 'warning' },
+	      'Warning'
+	    ),
+	    React.createElement(
+	      Button,
+	      { type: 'danger' },
+	      'Danger'
+	    )
+	  ),
+	  code: '<Button>Button</Button>\n<Button type="primary">Primary</Button>\n<Button type="warning">Warning</Button>\n<Button type="danger">Danger</Button>'
 	};
-	var Sizes = Colors;
+
+	var Sizes = {
+	  main: React.createElement(
+	    'span',
+	    null,
+	    React.createElement(
+	      Button,
+	      { type: 'primary', size: 'small' },
+	      'Small'
+	    ),
+	    React.createElement(
+	      Button,
+	      { type: 'success' },
+	      'Normal'
+	    ),
+	    React.createElement(
+	      Button,
+	      { type: 'info', size: 'medium' },
+	      'Medium'
+	    ),
+	    React.createElement(
+	      Button,
+	      { type: 'warning', size: 'large' },
+	      'Large'
+	    )
+	  ),
+	  code: '<Button type="primary" size="small">Small</Button>\n<Button type="success">Normal</Button>\n<Button type="info" size="medium">Medium</Button>\n<Button type="warning" size="large">Large</Button>'
+	};
+
+	var Outlined = {
+	  main: React.createElement(
+	    'span',
+	    null,
+	    React.createElement(
+	      Button,
+	      { outlined: true },
+	      'Button'
+	    ),
+	    React.createElement(
+	      Button,
+	      { outlined: true, type: 'danger' },
+	      'Danger'
+	    ),
+	    React.createElement(
+	      Button,
+	      { outlined: true, type: 'warning' },
+	      'Warning'
+	    ),
+	    React.createElement(
+	      Button,
+	      { outlined: true, type: 'success' },
+	      'Success'
+	    )
+	  ),
+	  code: '<Button outlined>Button</Button>\n<Button outlined type="danger">Danger</Button>\n<Button outlined type="warning">Warning</Button>\n<Button outlined type="success">Success</Button>'
+	};
+
+	var timeoutPromise = function timeoutPromise() {
+	  return new Promise(function (resolve, reject) {
+	    setTimeout(function () {
+	      resolve("result");
+	    }, 1000);
+	  });
+	};
+
+	var click = function click() {
+	  return timeoutPromise().then(function () {
+	    alert('success!');
+	  });
+	};
+
+	var States = {
+	  main: React.createElement(
+	    'span',
+	    null,
+	    React.createElement(
+	      Button,
+	      { loading: true },
+	      'Loading'
+	    ),
+	    React.createElement(
+	      Button,
+	      { onClick: click, type: 'primary' },
+	      'Promised click!'
+	    )
+	  ),
+
+	  code: 'click() {\n  return timeoutPromise(1000)\n    .then(() => { alert(\'success!\') })\n}\n\n<Button loading>Loading</Button>\n<Button onClick={this.click} type="primary">Start!</Button>'
+	};
+
+	var Disabled = {
+	  main: React.createElement(
+	    'span',
+	    null,
+	    React.createElement(
+	      Button,
+	      { disabled: true },
+	      'Disabled'
+	    ),
+	    React.createElement(
+	      Button,
+	      { disabled: true, type: 'info' },
+	      'Disabled'
+	    ),
+	    React.createElement(
+	      Button,
+	      { disabled: true, type: 'warning' },
+	      'Disabled'
+	    ),
+	    React.createElement(
+	      Button,
+	      { disabled: true, type: 'danger' },
+	      'Disabled'
+	    )
+	  ),
+
+	  code: '<Button disabled>Disabled</Button>\n<Button disabled type="info">Disabled</Button>\n<Button disabled type="warning">Disabled</Button>\n<Button disabled type="danger">Disabled</Button>'
+	};
+
+	var disable = function disable(event) {
+	  event.target.setAttribute('disabled', true);
+	};
+
+	var Properties = {
+	  main: React.createElement(
+	    'span',
+	    null,
+	    React.createElement(
+	      Button,
+	      { onMouseEnter: disable },
+	      'Disable on mouseenter'
+	    )
+	  ),
+
+	  code: 'disable(event) {\n  event.target.setAttribute(\'disabled\', true);\n}\n<Button onMouseEnter={this.disable()}>Disable on enter</Button>'
+	};
 
 	var ButtonsPage = React.createClass({
 	  displayName: 'ButtonsPage',
@@ -33526,8 +33683,13 @@
 	        ' Buttons '
 	      ),
 	      React.createElement('hr', null),
-	      React.createElement(Example, { title: 'Colors', example: Colors.main }),
-	      React.createElement(Example, { title: 'Sizes', example: Colors.main })
+	      React.createElement(Example, { title: 'Colors', example: Colors.main, code: Colors.code }),
+	      React.createElement(Example, { title: 'Sizes', example: Sizes.main, code: Sizes.code }),
+	      React.createElement(Example, { title: 'Outline', example: Outlined.main, code: Outlined.code }),
+	      React.createElement(Example, { title: 'States', example: States.main, code: States.code }),
+	      React.createElement(Example, { title: 'Disabled', example: Disabled.main, code: Disabled.code }),
+	      React.createElement(Example, { title: 'With FA icons', example: 'TODO', code: 'TODO' }),
+	      React.createElement(Example, { title: 'Events are supported', example: Properties.main, code: Properties.code })
 	    );
 	  }
 	});
@@ -33794,13 +33956,131 @@
 /* 353 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	var React = __webpack_require__(1);
+	var cx = __webpack_require__(354);
+
+	var Button = React.createClass({
+	  displayName: 'Button',
+	  componentWillMount: function componentWillMount() {
+	    this.setState(this.props);
+	  },
+	  onClick: function onClick(event) {
+	    if (this.state.onClick) {
+	      return this.loading(this.state.onClick(event));
+	    } else {
+	      return;
+	    }
+	  },
+	  loading: function loading(promise) {
+	    var _this = this;
+
+	    if (promise && promise.then) {
+	      this.setState({ loading: true });
+	      promise.then(function () {
+	        _this.setState({ loading: false });
+	      });
+	    }
+	  },
+	  getClassName: function getClassName() {
+	    var className = cx("button", { "is-loading": this.state.loading }, { "is-disabled": this.state.disabled }, { "is-outlined": this.state.outlined }, _defineProperty({}, 'is-' + this.state.size, this.state.size), _defineProperty({}, 'is-' + this.state.type, this.state.type));
+	    return className;
+	  },
+	  render: function render() {
+	    return React.createElement(
+	      'a',
+	      _extends({}, this.state, {
+	        className: this.getClassName(),
+	        onClick: this.onClick
+	      }),
+	      this.props.children
+	    );
+	  }
+	});
+
+	module.exports = Button;
+
+/***/ },
+/* 354 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+	/*!
+	  Copyright (c) 2016 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+	/* global define */
+
+	(function () {
+		'use strict';
+
+		var hasOwn = {}.hasOwnProperty;
+
+		function classNames() {
+			var classes = [];
+
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
+
+				var argType = typeof arg === 'undefined' ? 'undefined' : _typeof(arg);
+
+				if (argType === 'string' || argType === 'number') {
+					classes.push(arg);
+				} else if (Array.isArray(arg)) {
+					classes.push(classNames.apply(null, arg));
+				} else if (argType === 'object') {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				}
+			}
+
+			return classes.join(' ');
+		}
+
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if ("function" === 'function' && _typeof(__webpack_require__(355)) === 'object' && __webpack_require__(355)) {
+			// register as 'classnames', consistent with npm package name
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.classNames = classNames;
+		}
+	})();
+
+/***/ },
+/* 355 */
+/***/ function(module, exports) {
+
+	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, {}))
+
+/***/ },
+/* 356 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(354);
+	var content = __webpack_require__(357);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(356)(content, {});
+	var update = __webpack_require__(359)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -33817,10 +34097,10 @@
 	}
 
 /***/ },
-/* 354 */
+/* 357 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(355)();
+	exports = module.exports = __webpack_require__(358)();
 	// imports
 	exports.push([module.id, "@import url(https://cdn.rawgit.com/jgthms/bulma/master/css/bulma.min.css);", ""]);
 	exports.push([module.id, "@import url(https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/github-gist.min.css);", ""]);
@@ -33832,7 +34112,7 @@
 
 
 /***/ },
-/* 355 */
+/* 358 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -33887,7 +34167,7 @@
 	};
 
 /***/ },
-/* 356 */
+/* 359 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
