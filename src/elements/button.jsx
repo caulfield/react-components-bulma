@@ -26,6 +26,7 @@ const Button = React.createClass({
 
   getClassName() {
     const className = cx(
+      this.state.className,
       "button",
       {"is-loading": this.state.loading},
       {"is-disabled": this.state.disabled},
