@@ -5,8 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "build": "webpack",
-    "dev": "webpack-dev-server --config ./webpack.config.dev.js",
-    "build-site": "webpack --config ./webpack.config.dev.js",
+    "dev": "webpack-dev-server --config ./webpack.config.js",
+    "build-site": "webpack --config ./webpack.config.prod.js",
     "push-site": "git subtree push --prefix dist origin gh-pages",
     "test": "jest"
   },
@@ -22,6 +22,7 @@
     "react": "^0.14.7"
   },
   "devDependencies": {
+    "autoprefixer": "^6.3.3",
     "babel": "^6.3.26",
     "babel-core": "^6.4.5",
     "babel-jest": "^9.0.2",
@@ -32,12 +33,14 @@
     "babel-preset-react": "^6.3.13",
     "css-loader": "^0.23.1",
     "es6-promise": "^3.0.2",
+    "extract-text-webpack-plugin": "^1.0.1",
     "highlight.js": "^8.7.0",
     "history": "^2.0.0",
     "html-webpack-plugin": "^2.8.1",
     "jest-cli": "^0.9.1",
     "jsx-to-string": "^0.2.10",
     "node-sass": "^3.4.2",
+    "postcss-loader": "^0.8.1",
     "react-addons-test-utils": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-router": "^1.0.3",

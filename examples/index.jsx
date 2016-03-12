@@ -51,7 +51,9 @@ const Elements = React.createClass({
   }
 })
 
-const history = createHashHistory();
+const history = createHashHistory({
+  queryKey: false
+});
 
 render((
   <Router history={history}>
